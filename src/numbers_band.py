@@ -1,16 +1,11 @@
-number = int(input())
-band = range(2, 11)
-answer = 0
-for i in band:
-    result = 0
-    string = ''
-    x = number
-    while x != 0:
-        y = x % i
-        x = x // i
-        string += f'{y}'
-        result += y
+number, band, answer = int(input()), range(2, 11), 0
+
+for base in band:
+    result, temp_number = 0, number
+    while temp_number != 0:
+        remainder, temp_number = temp_number % base, temp_number // base
+        result += remainder
     if result > answer:
-        answer = result
-        best_band = i
-print(best_band)
+        answer, best_base = result, base
+
+print(best_base)
