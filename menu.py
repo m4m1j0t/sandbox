@@ -11,5 +11,5 @@ else:
         else:
             numbers += list(range(number))
             break
-for i in result:
+for i in numbers:
     print(menu[i])
