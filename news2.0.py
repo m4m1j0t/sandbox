@@ -9,7 +9,7 @@ for _ in range(0, n := int(input())):
         header_length += 1
     else:
         header += f"{string} \n"
-if header_length == len(header):
+if header_length == len(header) or header_length > len(header):
     print(header)
 else:
     print(f'{header[:header_length - 3]}...')
