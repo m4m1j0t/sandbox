@@ -3,10 +3,13 @@ header_length = x
 header = ""
 for _ in range(0, int(input())):
     string = input()
-    if len(string) <= x:
+    if len(string) < x:
         header += f"{string}\n"
         x -= len(string)
         header_length += 1
+    elif len(string) == x:
+        header += f"{string}\n"
+        x = 0   
     else:
         header += f"{string}\n"
         x = 0
