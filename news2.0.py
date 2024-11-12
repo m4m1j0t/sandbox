@@ -1,20 +1,12 @@
-x = int(input())
-header_length = x
-header = ""
+length = int(input())
+header = ''
 for _ in range(0, int(input())):
     string = input()
-    if len(string) < x:
-        header += f"{string}\n"
-        x -= len(string)
-        if x >= 3:
-            header_length += 1
-    elif len(string) == x:
-        header += f"{string}"
-        x = 0
+    if header < 3:
+        pass
+    elif len(string) <= length >= 3:
+        header += f'{string}\n'
     else:
-        header += f"{string}"
-        x = 0
-if header_length == len(header) or header_length > len(header):
-    print(header)
-else:
-    print(f'{header[:header_length - 3]}...')
+        header += f'{string[:lebgth - 3]}...'
+    length -= len(string)
+print(header)
