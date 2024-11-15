@@ -1,12 +1,14 @@
-length = int(input())
-header = ''
-for _ in range(0, int(input())):
-    string = input()
-    if header < 3:
-        pass
-    elif len(string) <= length >= 3:
+l, header, = int(input()), ''
+for _ in range(0, n := int(input())):
+    x = len(string := input())
+    y = l - x
+    if x <= l and y > 2:
         header += f'{string}\n'
+        l -= x
+    elif l == 0:
+        pass
     else:
-        header += f'{string[:lebgth - 3]}...'
-    length -= len(string)
+        z = l - 3
+        header += f'{string[:z]}...'
+        l = 0
 print(header)
