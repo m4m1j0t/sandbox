@@ -1,14 +1,19 @@
-l, header, = int(input()), ''
-for _ in range(0, n := int(input())):
-    x = len(string := input())
-    y = l - x
-    if x <= l and y > 2:
+line = int(input())
+n = int(input())
+header = ''
+
+for _ in range(n):
+    string = input()
+    x = len(string)
+    if x <= line:
         header += f'{string}\n'
-        l -= x
-    elif l == 0:
-        pass
+        line -= x
     else:
-        z = l - 3
-        header += f'{string[:z]}...'
-        l = 0
+        if line < 3:
+            header += f'{string[:line]}\n'
+            line = 0
+        else:
+            header += f'{string[:line-3]}...\n'
+            line = 0
+
 print(header)
