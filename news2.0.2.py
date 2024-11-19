@@ -1,11 +1,14 @@
-size, line = int(input()), []
+size = int(input())
+lines = []
+
 for _ in range(int(input())):
-    line.append(input())
-for i in line:
-    if size < 3:
+    lines.append(input())
+
+for line in lines:
+    if size <= 3:
         pass
-    elif size - len(i) >= 3 or size == len(i):
-        print(i)
-    elif size - len(i) < 3:
-        print(i[:size - 3] + '...')
-    size -= len(i)
+    elif size - len(line) > 3 or size == len(line):
+        print(line)
+    elif size - len(line) <= 3:
+        print(line[:size - 3] + '...')
+    size -= len(line)
