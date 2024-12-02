@@ -1,83 +1,57 @@
 import pygame
 import sys
 
-# Инициализируем Pygame
+# Инициализация Pygame
 pygame.init()
 
-# Задаем размеры окна
-screen_width = 640
-screen_height = 480
+# Настройки экрана
+screen_width = 800
+screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
 
-# Задаем название окна
-pygame.display.set_caption("Космический корабль")
+# Загрузка картинки котика
+cat_image = pygame.image.load('image_for_game.jpg')
+cat_image = pygame.transform.scale(cat_image, (50, 50)) # Изменение размера картинки, если необходимо
 
-# Задаем цвета
-white = (255, 255, 255)
-red = (255, 0, 0)
-green = (0, 255, 0)
+# Начальные координаты котика
+cat_x = screen_width / 2
+cat_y = screen_height / 2
 
-# Задаем классы для кораблей
-class Spaceship(pygame.Rect):
-    def __init__(self, x, y):
-        super().__init__(x, y, 50, 50)
-        self.speed = 5
+# Скорость движения котика
+speed = 5
 
-    def move(self, dx, dy):
-        self.x += dx * self.speed
-        self.y += dy * self.speed
-
-class Enemy(pygame.Rect):
-    def __init__(self, x, y):
-        super().__init__(x, y, 50, 50)
-        self.speed = 2
-
-    def move(self):
-        self.y += self.speed
-
-# Создаем корабль игрока
-player = Spaceship(100, 100)
-
-# Создаем список вражеских кораблей
-enemies = [Enemy(200, 0), Enemy(400, 0)]
-
-# Основной цикл игры
+# Основной игровой цикл
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
 
-    # Движение корабля игрока
+    # Обработка нажатий клавиш
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT]:
-        player.move(-1, 0)
-    if keys[pygame.K_RIGHT]:
-        player.move(1, 0)
     if keys[pygame.K_UP]:
-        player.move(0, -1)
+        cat_y -= speed
     if keys[pygame.K_DOWN]:
-        player.move(0, 1)
+        cat_y += speed
+    if keys[pygame.K_LEFT]:
+        cat_x -= speed
+    if keys[pygame.K_RIGHT]:
+        cat_x += speed
 
-    # Движение вражеских кораблей
-    for enemy in enemies:
-        enemy.move()
-        if enemy.y > screen_height:
-            enemy.y = 0
+    # Проверка границ экрана
+    if cat_x < 0:
+        cat_x = 0
+    elif cat_x > screen_width - cat_image.get_width():
+        cat_x = screen_width - cat_image.get_width()
+    if cat_y < 0:
+        cat_y = 0
+    elif cat_y > screen_height - cat_image.get_height():
+        cat_y = screen_height - cat_image.get_height()
 
-    # Проверяем столкновения
-    for enemy in enemies:
-        if player.colliderect(enemy):
-            print("Игрок столкнулся с вражеским кораблем!")
-            pygame.quit()
-            sys.exit()
+    # Очистка экрана и рисование котика
+    screen.fill((0, 0, 0)) # Заливка экрана черным цветом
+    screen.blit(cat_image, (cat_x, cat_y))
 
-    # Рисуем все
-    screen.fill((0, 0, 0))
-    pygame.draw.rect(screen, green, player)
-    for enemy in enemies:
-        pygame.draw.rect(screen, red, enemy)
+    # Обновление экрана
     pygame.display.flip()
-
-    # Ограничиваем частоту кадров
     pygame.time.Clock().tick(60)
