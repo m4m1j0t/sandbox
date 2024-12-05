@@ -10,8 +10,8 @@ screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
 
 # Загрузка картинки котика
-cat_image = pygame.image.load('image_for_game.jpg')
-cat_image = pygame.transform.scale(cat_image, (50, 50)) # Изменение размера картинки, если необходимо
+
+#cat_image = pygame.transform.scale(cat_image, (50, 50)) # Изменение размера картинки, если необходимо
 
 # Начальные координаты котика
 cat_x = screen_width / 2
@@ -21,6 +21,7 @@ cat_y = screen_height / 2
 speed = 5
 
 # Основной игровой цикл
+cat_image = pygame.image.load('kat_for_game.jpg').convert_alpha()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
