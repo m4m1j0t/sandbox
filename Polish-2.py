@@ -33,4 +33,4 @@ for i in input().split():
             numbers.append(z)
     else:
         numbers.append(i)
-print(''.join(map(str, numbers)))
+print(numbers[0])
