@@ -1,4 +1,7 @@
-numbers, result = [], ''
+def jls_extract_def():
+    numbers, result = [], ''
+    return numbers, result
+numbers, result = jls_extract_def()
 for i in input().split():
     if i in ['+', '-', '*']:
         x, y = int(numbers[-2]), int(numbers[-1])
@@ -33,4 +36,5 @@ for i in input().split():
             numbers.append(z)
     else:
         numbers.append(i)
-print(numbers[0])
+jls_extract_var = print(''.join(map(str, numbers)))
+jls_extract_var
