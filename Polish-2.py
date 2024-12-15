@@ -1,18 +1,25 @@
 def jls_extract_def():
     numbers, result = [], ''
     return numbers, result
+
+
 numbers, result = jls_extract_def()
+
 for i in input().split():
+
     if i in ['+', '-', '*']:
         x, y = int(numbers[-2]), int(numbers[-1])
+
         if i == '+':
             result = x + y
         elif i == '-':
             result = x - y
         else:
             result = x * y
+
         numbers = numbers[:-2]
         numbers.append(result)
+
     elif i in ['~', '!']:
         if i == '~':
             result = -numbers[0]
@@ -20,10 +27,11 @@ for i in input().split():
             numbers.append(result)
         else:
             a = 1
-            for b in range(1, numbers + 1):
+            for b in range(1, int(''.join(map(str, numbers))) + 1):
                 a *= b
             numbers = numbers[:-1]
             numbers.append(a)
+
     elif i in ['#', '@']:
         if i == '#':
             x = numbers[-1]
@@ -36,5 +44,5 @@ for i in input().split():
             numbers.append(z)
     else:
         numbers.append(i)
-jls_extract_var = print(''.join(map(str, numbers)))
-jls_extract_var
+
+print(''.join(map(str, numbers)))
