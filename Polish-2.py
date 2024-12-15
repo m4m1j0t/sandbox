@@ -1,24 +1,21 @@
-def jls_extract_def():
-    numbers, result = [], ''
-    return numbers, result
+numbers = []
 
 
-numbers, result = jls_extract_def()
-
-for i in input().split():
+for i in (string := input().split()):
 
     if i in ['+', '-', '*']:
-        x, y = int(numbers[-2]), int(numbers[-1])
-
-        if i == '+':
-            result = x + y
-        elif i == '-':
-            result = x - y
+        if len(numbers) >= 2:
+            x, y = int(numbers[-2]), int(numbers[-1])
+            if i == '+':
+                result = x + y
+            elif i == '-':
+                result = x - y
+            else:
+                result = x * y
+            numbers = numbers[:-2]
+            numbers.append(result)
         else:
-            result = x * y
-
-        numbers = numbers[:-2]
-        numbers.append(result)
+            string.append(i)
 
     elif i in ['~', '!']:
         if i == '~':
