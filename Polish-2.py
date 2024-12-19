@@ -18,7 +18,7 @@ for i in (string := input().split()):
 
     elif i in ['~', '!']:
         if i == '~':
-            result = -numbers[0]
+            result = -int(numbers[-1])
             numbers = numbers[:-1]
             numbers.append(result)
         else:
