@@ -31,14 +31,14 @@ for i in (string := input().split()):
     elif i in ['#', '@']:
         if i == '#':
             x = numbers[-1]
-            numbers.append(x)
+            numbers.append(f' {x}')
         else:
             x, y, z = numbers[-1], numbers[-2], numbers[-3]
             numbers = numbers[:-3]
-            numbers.append(x)
-            numbers.append(y)
-            numbers.append(z)
+            numbers.append(f' {y}')
+            numbers.append(f' {x}')
+            numbers.append(f' {z}')
     else:
         numbers.append(i)
 
-print(''.join(map(str, numbers)))
+print(''.join(map(str, numbers)).lstrip())
