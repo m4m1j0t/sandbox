@@ -39,6 +39,6 @@ for i in (string := input().split()):
             numbers.append(f' {x}')
             numbers.append(f' {z}')
     else:
-        numbers.append(f' {i}')
+        numbers.append(i)
 
-print(''.join(map(str, numbers)).strip())
+print(''.join(map(str, numbers[0])).strip())
