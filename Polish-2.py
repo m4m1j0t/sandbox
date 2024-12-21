@@ -14,19 +14,19 @@ for i in (string := input().split()):
         else:
             result = x * y
         numbers = numbers[:-2]
-        numbers.append(result)
+        numbers.append(f' {result}')
 
     elif i in ['~', '!']:
         if i == '~':
             result = -int(numbers[-1])
             numbers = numbers[:-1]
-            numbers.append(result)
+            numbers.append(f' {result}')
         else:
             a = 1
-            for b in range(1, int(''.join(map(str, numbers))) + 1):
+            for b in range(1, int(''.join(map(str, numbers[-1]))) + 1):
                 a *= b
             numbers = numbers[:-1]
-            numbers.append(a)
+            numbers.append(f' {a}')
 
     elif i in ['#', '@']:
         if i == '#':
@@ -39,6 +39,6 @@ for i in (string := input().split()):
             numbers.append(f' {x}')
             numbers.append(f' {z}')
     else:
-        numbers.append(i)
+        numbers.append(f' {i}')
 
-print(''.join(map(str, numbers)).lstrip())
+print(''.join(map(str, numbers)).strip())
