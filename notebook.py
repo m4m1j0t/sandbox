@@ -1,24 +1,12 @@
-def factorial(n):
-    return n * factorial(n - 1) if n > 1 else 1
-
-
-data = list(input().split())
-result = [int(data[0])]
-for i in data[1:]:
-    if i.isdigit():
-        result.append(int(i))
-    elif i == "/":
-        a = result.pop()
-        result[-1] //= a
-    elif i == "~":
-        result[-1] = -result[-1]
-    elif i == "#":
-        result.append(result[-1])
-    elif i == "!":
-        result[-1] = factorial(result[-1])
-    elif i == "@":
-        result.append(result.pop(-3))
+countries = dict()
+country = input()
+str_number = 0
+while country != "СТОП":
+    if country not in countries:
+        countries[country] = [str_number]
     else:
-        a = result.pop()
-        exec("result[-1] " + i + "= a")
-print(result[0])
+        countries[country].append(str_number)
+    str_number += 1
+    country = input()
+for country in countries:
+    print(f"{country}: {countries[country]}")
